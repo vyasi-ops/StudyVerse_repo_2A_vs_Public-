@@ -1,0 +1,6 @@
+{
+  "name": "StudyVerse & Math Tables Teacher",
+  "description": "Comprehensive learning platform with study planner, multi-stage quizzes, flashcards, games, mascot, pomodoro timers, and an interactive Math Tables Teacher with timed and untimed modes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
