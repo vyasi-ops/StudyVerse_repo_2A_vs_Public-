@@ -10,7 +10,8 @@ import {
   Timer, 
   Bot, 
   Settings,
-  GraduationCap
+  GraduationCap,
+  Flame
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -26,6 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const tabTitles: Record<TabId, string> = {
     math: 'Math Lab & Tables Teacher',
+    'running-pomodoro': 'Running Pomodoro Window',
     planner: 'Study Planner',
     quizzes: 'Multi-Stage Quiz Hub',
     flashcards: 'Flashcard Hub',
@@ -61,6 +63,13 @@ export const Header: React.FC<HeaderProps> = ({
           title="Math Lab"
         >
           <Calculator className="w-4 h-4" />
+        </button>
+        <button
+          onClick={() => onSelectTab('running-pomodoro')}
+          className={`p-1.5 rounded-lg ${activeTab === 'running-pomodoro' ? 'bg-indigo-600 text-white' : 'text-slate-600'}`}
+          title="Running Pomodoro"
+        >
+          <Flame className="w-4 h-4" />
         </button>
         <button
           onClick={() => onSelectTab('planner')}

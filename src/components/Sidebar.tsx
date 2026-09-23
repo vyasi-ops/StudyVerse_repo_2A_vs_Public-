@@ -9,7 +9,8 @@ import {
   Timer, 
   Bot, 
   Settings, 
-  GraduationCap 
+  GraduationCap,
+  Flame
 } from 'lucide-react';
 import { TabId } from '../types.ts';
 
@@ -26,6 +27,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const navItems: { id: TabId; label: string; icon: React.ReactNode; badge?: string }[] = [
     { id: 'math', label: 'Math & Tables', icon: <Calculator className="w-5 h-5" />, badge: 'NEW' },
+    { id: 'running-pomodoro', label: 'Running Pomodoro', icon: <Flame className="w-5 h-5" />, badge: 'HOT' },
     { id: 'planner', label: 'Study Planner', icon: <CalendarCheck className="w-5 h-5" /> },
     { id: 'quizzes', label: 'Quiz Hub', icon: <Brain className="w-5 h-5" /> },
     { id: 'flashcards', label: 'Flashcard Hub', icon: <Layers className="w-5 h-5" /> },

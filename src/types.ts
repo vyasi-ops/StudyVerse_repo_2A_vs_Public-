@@ -10,7 +10,8 @@ export type TabId =
   | 'game' 
   | 'mascot' 
   | 'timer' 
-  | 'chatbot';
+  | 'chatbot'
+  | 'running-pomodoro';
 
 export interface TaskItem {
   id: number;

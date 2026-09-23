@@ -8,6 +8,21 @@ const catQuotes = [
   "Just one more question, human. I believe in you!",
   "Don't forget your 7s times table: 7 × 8 = 56!",
   "You've got a sharp mind, let's keep sharpening it!",
+  "Every problem you solve makes you stronger! Meow~ 💪",
+  "Your brain is getting smarter with every question! Keep it up!",
+  "I'm so proud of your dedication. You're unstoppable! 🌟",
+  "Remember: mistakes are just learning in disguise. Keep going!",
+  "You're building confidence with every answer. Purr-fect! 😸",
+  "Focus and persistence beat perfection every single time!",
+  "Your future self will thank you for studying hard today!",
+  "Meow if you're ready to conquer today's goals! 🎯",
+  "You've already overcome so much. This is nothing! 🚀",
+  "Growth happens outside your comfort zone. Keep exploring!",
+  "One question at a time. You've got this, scholar! 📚",
+  "Your effort today compounds into success tomorrow!",
+  "Believe in yourself the way I believe in you! 🐱✨",
+  "Excellence isn't a destination—it's a journey. Enjoy it!",
+  "You're not just learning, you're becoming unstoppable!",
 ];
 
 const dogQuotes = [
@@ -16,6 +31,32 @@ const dogQuotes = [
   "Stay paws-itive, you've got this in the bag!",
   "Math is like a game of fetch—the more you practice, the faster you get!",
   "High five! Or high paw! Keep going!",
+  "Your dedication makes me so happy! Woof woof! 🐕",
+  "Every study session is a step closer to your dreams!",
+  "You're doing better than you think! Trust me, buddy! 🌟",
+  "Tired? Take a break! But then come right back—you're almost there!",
+  "Your hard work today is your superpower tomorrow! 💪",
+  "The best time to study was yesterday. The second best? Right now!",
+  "You're not alone in this journey—I'm cheering you on! 🎉",
+  "Woof! Every correct answer is a victory to celebrate!",
+  "Don't compare your beginning to someone else's middle!",
+  "You're training your brain like an athlete. That's awesome! 🏆",
+  "Success isn't luck—it's preparation meeting opportunity!",
+  "Keep that motivation going! You're on fire today! 🔥",
+  "I can see your potential from here! Woof woof! 🐶✨",
+  "Struggle today = strength tomorrow. You're building power!",
+  "Your consistency is your secret weapon. Keep it up, champ!",
+];
+
+const encouragementBoosts = [
+  "🌟 You're making incredible progress!",
+  "💪 Your dedication is truly inspiring!",
+  "🚀 You're unstoppable!",
+  "🎯 Laser focus—I love it!",
+  "📚 Knowledge seeker detected!",
+  "⚡ Energy level: MAXIMUM!",
+  "🏆 Champion mindset activated!",
+  "🌈 Crushing goals like a pro!",
 ];
 
 export const MascotTab: React.FC = () => {
@@ -26,6 +67,7 @@ export const MascotTab: React.FC = () => {
   const [status, setStatus] = useState('Ready to study');
   const [petCount, setPetCount] = useState(0);
   const [isPetting, setIsPetting] = useState(false);
+  const [showBoost, setShowBoost] = useState(false);
 
   const toggleMascot = () => {
     setIsCat(!isCat);
@@ -47,6 +89,12 @@ export const MascotTab: React.FC = () => {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     setSpeech(randomQuote);
     setStatus(isCat ? '*Purrs happily* 🐾 meow~' : '*Wags tail furiously* 🐕 woof!');
+
+    // Show motivation boost
+    setShowBoost(true);
+    setTimeout(() => {
+      setShowBoost(false);
+    }, 2000);
 
     setTimeout(() => {
       setIsPetting(false);
@@ -111,6 +159,14 @@ export const MascotTab: React.FC = () => {
               <Heart className="w-5 h-5 fill-rose-500" />
             </div>
           )}
+
+          {showBoost && (
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 text-center animate-pulse">
+              <div className="bg-gradient-to-r from-yellow-400 to-orange-400 text-slate-900 font-bold text-xs px-3 py-1 rounded-full whitespace-nowrap shadow-lg">
+                {encouragementBoosts[Math.floor(Math.random() * encouragementBoosts.length)]}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Mascot Speech Bubble */}
@@ -126,6 +182,14 @@ export const MascotTab: React.FC = () => {
           <Sparkles className="w-4 h-4" />
           <span>Pet Your Study Mascot 🐾 ({petCount} pets)</span>
         </button>
+
+        {/* Motivation Tips Section */}
+        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-100 rounded-2xl p-4 space-y-2">
+          <p className="text-xs font-semibold text-indigo-900">💡 Study Tip:</p>
+          <p className="text-xs text-indigo-800 leading-relaxed">
+            Struggling? Take a quick 5-minute break, pet your mascot, and come back refreshed. Your brain will thank you!
+          </p>
+        </div>
       </div>
     </div>
   );

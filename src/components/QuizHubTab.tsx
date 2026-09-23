@@ -4,6 +4,7 @@ import { soundFx } from '../utils/audio.ts';
 import { CheckCircle2, XCircle, RotateCcw, Upload, FileText, Sparkles } from 'lucide-react';
 import { parseQuizScript, parseQuizJson } from '../utils/parser.ts';
 import { premadeQuizzes } from '../data/premadeQuizzes.ts';
+import { SortingQuestion } from './SortingQuestion.tsx';
 
 const defaultStage1Text = `- Question: Which sentence has the correct order of adjectives?
 - Options: She bought a red old car, She bought an old red car, She bought red an old car, She bought old red a car

@@ -81,7 +81,15 @@ async function startServer() {
       }
 
       const prompt = `Convert the following text into a structured JSON array of quiz questions.
-      The output MUST be a JSON array of objects conforming to this schema:
+
+      Follow these strict rules:
+      1. Analyze the provided text to extract questions, options, answers, and explanations.
+      2. The output MUST be a valid JSON array of objects.
+      3. For each object, infer the "type" based on the question structure (use "mcq" if options are provided).
+      4. Ensure all required fields (id, type, question, answer, points) are present.
+      5. If options are not explicitly provided for an mcq, generate reasonable ones.
+      
+      The schema for each object MUST be:
       {
         "id": number,
         "type": "mcq" | "true_false" | "fill_in_blank" | "short_answer" | "matching" | "sorting",
@@ -95,10 +103,10 @@ async function startServer() {
       Text to parse:
       ${text}
       
-      Return ONLY the JSON array.`;
+      Return ONLY the raw JSON array. Do not include any other text, markdown formatting, or explanations.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.8-flash",
+        model: "gemini-2.0-flash",
         contents: prompt,
         config: {
           responseMimeType: "application/json",
@@ -134,7 +142,7 @@ async function startServer() {
       Return ONLY the JSON array.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.8-flash",
+        model: "gemini-2.0-flash",
         contents: prompt,
         config: {
           responseMimeType: "application/json",

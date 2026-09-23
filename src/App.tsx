@@ -15,7 +15,7 @@ import { QuizGameTab } from './components/QuizGameTab.tsx';
 import { MascotTab } from './components/MascotTab.tsx';
 import { TimerTab } from './components/TimerTab.tsx';
 import { ChatbotTab } from './components/ChatbotTab.tsx';
-import { SidePomodoro } from './components/SidePomodoro.tsx';
+import { RunningPomodoroTab } from './components/RunningPomodoroTab.tsx';
 import { SettingsModal } from './components/SettingsModal.tsx';
 import { LoadingOverlay } from './components/LoadingOverlay.tsx';
 import { DeveloperDebugReader } from './components/DeveloperDebugReader.tsx';
@@ -61,6 +61,7 @@ export default function App() {
         <main className="flex-1 overflow-y-auto p-4 md:p-8">
           <div className="max-w-6xl mx-auto w-full pb-20">
             {activeTab === 'math' && <MathTab />}
+            {activeTab === 'running-pomodoro' && <RunningPomodoroTab />}
             {activeTab === 'planner' && <PlannerTab />}
             {activeTab === 'quizzes' && (
               <QuizHubTab onQuestionsUpdated={setSharedQuizQuestions} />
@@ -75,9 +76,6 @@ export default function App() {
           </div>
         </main>
       </div>
-
-      {/* Floating Side Pomodoro (accessible anytime across all sections) */}
-      <SidePomodoro />
 
       {/* Global Settings Modal */}
       <SettingsModal
